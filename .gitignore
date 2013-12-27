@@ -1,0 +1,7 @@
+public/
+build/build
+public
+node_modules
+assets/components
+semantic-angle.sublime-project
+semantic-angle.sublime-workspace

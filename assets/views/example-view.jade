@@ -1,0 +1,58 @@
+include helpers
+
+mixin element(id, title)
+        div(id=id)
+            h5(style='text-align: center;')= title
+
+mixin celement(id, title)
+    .four.wide.column
+        +element(id, title)
+
+mixin svicon(title)
+    .iconmelon
+        svg(viewBox="0 0 32 32")
+            use(xlink:href=title)
+
+    
+extends base 
+block append content
+
+            div(style='text-align: center;')
+                h1.ui.header iMost
+                +svicon('#eye')
+
+            .ui.stackable.grid.two.column
+                .column
+                    +element('cycles-hist', 'Execution cycles')
+                .column
+                    +element('energy-hist', 'Energy')
+
+            .ui.grid
+
+                +celement('pn-pie', 'processors')
+                +celement('iw-pie', 'issue')
+                +celement('ics-pie', 'icache size')
+                +celement('dcs-pie', 'dcache size')
+
+            .ui.grid
+
+                +celement('icw-pie', 'ic assoc')
+                +celement('dcw-pie', 'dc assoc')
+                +celement('l2cw-pie', 'l2 assoc')
+                +celement('l2cs-pie', 'l2 csize')
+
+            table.ui.table.segment#data-table 
+                thead
+                    tr 
+                       th Processors
+                       th Instruction cache size
+                       th Data cache size
+                       th Level 2 cache size 
+                       th IC assoc.
+                       th DC assoc.
+                       th L2 assoc.
+                       th Issue
+                       th Cache block 
+                       th Energy
+                       th Cycles
+
